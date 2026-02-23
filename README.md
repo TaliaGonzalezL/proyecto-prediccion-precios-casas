@@ -39,10 +39,10 @@ El proyecto se desarrolló siguiendo un ciclo de vida estructurado de ciencia de
 La experimentación demostró que el modelo `RandomForestRegressor` tuvo un rendimiento significativamente superior al baseline de `LinearRegression`.
 
 *   **Modelo Ganador:** `RandomForestRegressor`
-*   **R² (Coeficiente de Determinación):** [Escribe aquí tu valor R² del RandomForest, ej: 0.89]
-*   **MAE (Error Absoluto Medio):** $[Escribe aquí tu valor MAE del RandomForest, ej: 2.53]k
+*   **R² (Coeficiente de Determinación):** 0.89
+*   **MAE (Error Absoluto Medio):** $2.07k
 
-Un **R² de [tu valor R²]** indica que nuestro modelo es capaz de **explicar el [tu R² como porcentaje, ej: 89%]% de la variabilidad en los precios de las viviendas** utilizando las características proporcionadas. El MAE nos dice que, en promedio, las predicciones del modelo tienen un error de aproximadamente **$[tu MAE * 1000, ej: $2,530]**.
+Un **R² de 0.89** indica que nuestro modelo es capaz de **explicar el 89%% de la variabilidad en los precios de las viviendas** utilizando las características proporcionadas. El MAE nos dice que, en promedio, las predicciones del modelo tienen un error de aproximadamente **$2,070]**.
 
 ---
 
@@ -50,7 +50,8 @@ Un **R² de [tu valor R²]** indica que nuestro modelo es capaz de **explicar el
 
 Para entender *por qué* el modelo toma sus decisiones, se analizó la importancia de las características (`Feature Importance`). El análisis revela que el modelo basa sus predicciones principalmente en los dos factores identificados durante el EDA, lo que confirma que está aprendiendo patrones lógicos.
 
-*(Aquí es donde arrastrarás y soltarás tu imagen `importancia_caracteristicas.png`)*
+<img width="882" height="548" alt="Importancia_caracteristicas" src="https://github.com/user-attachments/assets/21bafd72-82d2-444b-a57d-2a7838997ae6" />
+
 
 ---
 
