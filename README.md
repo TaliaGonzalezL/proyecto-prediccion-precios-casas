@@ -1,44 +1,62 @@
-# proyecto-prediccion-precios-casas
-Proyecto de Machine Learning para predecir el precio de viviendas usando Regresión Lineal y Scikit-Learn.
-# Análisis de Segmentación de Clientes
+# Predicción de Precios de Viviendas con Machine Learning
 
 ## Resumen del Proyecto
 
-Este proyecto es un análisis exploratorio de datos (EDA) realizado con Python y Pandas sobre un conjunto de datos de ventas de una inmobiliaria. El objetivo principal es predecir el precio de viviendas usando Regresión Lineal y Scikit-Learn.
+Este proyecto de portafolio demuestra el proceso completo de construcción de un modelo de Machine Learning para un problema de **regresión**. Utilizando el clásico dataset "Boston Housing", el objetivo es predecir el precio mediano de las viviendas (`PRICE`) basándose en diversas características socioeconómicas y estructurales.
+
+El proyecto abarca desde el Análisis Exploratorio de Datos (EDA) para entender las relaciones entre variables, hasta el entrenamiento, comparación y evaluación de múltiples modelos. El resultado final es un pipeline de predicción robusto y una explicación de los factores más influyentes en sus decisiones.
 
 ---
 
 ## Problema de Negocio
 
-La empresa necesita una forma clara y basada en datos para identificar y construir una herramienta que nos ayude a estimar el precio de una casa nueva que sale al mercado
+Para agentes inmobiliarios, desarrolladores y compradores, estimar el valor de una propiedad de manera precisa es fundamental. Un modelo predictivo confiable puede automatizar y mejorar la precisión de las tasaciones, identificar propiedades infravaloradas o sobrevaloradas y ayudar a entender qué características impactan más en el valor de mercado de una vivienda.
+
 ---
 
-## Proceso de Análisis
+## Proceso de Análisis y Modelado
 
-El análisis se realizó siguiendo estos pasos:
+El proyecto se desarrolló siguiendo un ciclo de vida estructurado de ciencia de datos:
 
-1.  **Carga de Datos:** Se creó un DataFrame en Pandas con datos de transacciones, incluyendo ID de cliente, producto y precio.
-2.  **Agregación de Datos:** Se utilizó la función `.groupby()` para agrupar todas las transacciones por cliente.
-3.  **Cálculo de Métricas:** Para cada cliente, se calcularon dos métricas clave:
-    *   `Gasto_Total`: La suma total de dinero gastado.
-    *   `Numero_Compras`: El conteo total de transacciones realizadas.
-4.  **Creación de Segmentos:** Se utilizó la función `np.where` para crear una nueva columna `Segmento`, clasificando a los clientes como "Cliente VIP" si su gasto total superaba los $1000, y "Cliente Regular" en caso contrario.
-5.  **Análisis Final:** Se utilizó `.value_counts()` para obtener el conteo final de clientes en cada segmento.
+1.  **Análisis Exploratorio de Datos (EDA):** Se investigaron las distribuciones de las variables y las relaciones entre ellas. Se utilizó un **mapa de calor de correlaciones** para identificar las características con mayor impacto en el `PRICE`. El análisis confirmó que `RM` (número de habitaciones) tiene una fuerte correlación positiva y `LSTAT` (% de estatus bajo) tiene una fuerte correlación negativa con el precio.
+
+2.  **Preparación de Datos:** Los datos se dividieron en conjuntos de entrenamiento (80%) y prueba (20%) para asegurar una evaluación honesta del rendimiento del modelo.
+
+3.  **Construcción de Pipelines:** Para garantizar un preprocesamiento robusto y consistente, se utilizaron `Pipelines` de Scikit-Learn. Cada pipeline incluía un paso de **escalado de características** (`StandardScaler`) para normalizar los datos antes de pasarlos al modelo.
+
+4.  **Experimentación de Modelos:** Se entrenaron y evaluaron dos modelos diferentes para comparar su rendimiento:
+    *   **Modelo Baseline:** `LinearRegression`, para establecer un punto de partida.
+    *   **Modelo Avanzado:** `RandomForestRegressor`, para capturar relaciones más complejas y no lineales.
+
+5.  **Evaluación:** El rendimiento de cada modelo se midió utilizando dos métricas clave para regresión:
+    *   **Error Absoluto Medio (MAE):** Mide el error promedio de las predicciones en dólares.
+    *   **Coeficiente de Determinación (R²):** Mide el porcentaje de la variabilidad en los precios que el modelo es capaz de explicar.
 
 ---
 
 ## Resultados y Conclusiones
 
-El análisis reveló la siguiente distribución de clientes:
+La experimentación demostró que el modelo `RandomForestRegressor` tuvo un rendimiento significativamente superior al baseline de `LinearRegression`.
 
-*   **Clientes VIP:** [Escribe aquí el número que obtuviste]
-*   **Clientes Regulares:** [Escribe aquí el número que obtuviste]
+*   **Modelo Ganador:** `RandomForestRegressor`
+*   **R² (Coeficiente de Determinación):** 0.89
+*   **MAE (Error Absoluto Medio):** $2.07k
 
-Esta segmentación inicial proporciona una base clara para que el negocio comience a tratar a sus clientes más valiosos de manera diferenciada, potencialmente aumentando la lealtad y el valor de vida del cliente.
+Un **R² de 0.89** indica que nuestro modelo es capaz de **explicar el 89%% de la variabilidad en los precios de las viviendas** utilizando las características proporcionadas. El MAE nos dice que, en promedio, las predicciones del modelo tienen un error de aproximadamente **$2,070]**.
+
+---
+
+## Interpretabilidad del Modelo
+
+Para entender *por qué* el modelo toma sus decisiones, se analizó la importancia de las características (`Feature Importance`). El análisis revela que el modelo basa sus predicciones principalmente en los dos factores identificados durante el EDA, lo que confirma que está aprendiendo patrones lógicos.
+
+<img width="882" height="548" alt="Importancia_caracteristicas" src="https://github.com/user-attachments/assets/21bafd72-82d2-444b-a57d-2a7838997ae6" />
+
 
 ---
 
 ## Herramientas Utilizadas
 
 *   **Lenguaje:** Python
-*   **Librerías:** Pandas, NumPy
+*   **Librerías Principales:** Pandas, NumPy, Scikit-Learn, Seaborn, Matplotlib
+*   **Flujo de Trabajo:** Git, GitHub, Google Colab
